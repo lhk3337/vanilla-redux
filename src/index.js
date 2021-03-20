@@ -3,10 +3,11 @@ const add = document.getElementById("add");
 const minus = document.getElementById("minus");
 const number = document.querySelector("span");
 
-const reducer = (count = 0) => {
-  console.log(count);
+const reducer = (count = 0, action) => {
+  console.log(action);
   return count;
 };
 
 const store = createStore(reducer);
-console.log(store.getState());
+// console.log(store.getState());
+store.dispatch({ type: "HELLO" });
