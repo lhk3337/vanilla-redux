@@ -6,12 +6,13 @@ const number = document.querySelector("span");
 const reducer = (count = 0, action) => {
   //redux에서 데이터를 수정하는 유일한 곳
   // console.log(count, action);
-  if (action.type === "ADD") {
-    return count + 1;
-  } else if (action.type === "MINUS") {
-    return count - 1;
-  } else {
-    return count;
+  switch (action.type) {
+    case "ADD":
+      return count + 1;
+    case "MINUS":
+      return count - 1;
+    default:
+      return count;
   }
 };
 //action.type이 ADD이면 count + 1이 되고 action.type MINUS이면 count - 1, 둘다 이니면 count 반환
