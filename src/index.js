@@ -16,11 +16,12 @@ const reducer = (count = 0, action) => {
 
 const store = createStore(reducer);
 
-store.dispatch({ type: "ADD" }); //count = 1, return + 1
-store.dispatch({ type: "ADD" }); //count = 2, return + 1
-store.dispatch({ type: "ADD" }); //count = 3, return + 1
-store.dispatch({ type: "ADD" }); //count = 4, return + 1
-store.dispatch({ type: "ADD" }); //count = 5, return + 1
-store.dispatch({ type: "MINUS" }); //count = 4, return - 1
+const handleAdd = () => {
+  store.dispatch({ type: "ADD" });
+};
+const handleMinus = () => {
+  store.dispatch({ type: "MINUS" });
+};
 
-console.log(store.getState());
+add.addEventListener("click", handleAdd);
+minus.addEventListener("click", handleMinus);
