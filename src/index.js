@@ -15,6 +15,11 @@ const reducer = (count = 0, action) => {
 };
 
 const store = createStore(reducer);
+const onChange = () => {
+  console.log("스토어 상태가 변했어요.");
+};
+
+store.subscribe(onChange);
 
 const handleAdd = () => {
   store.dispatch({ type: "ADD" });
