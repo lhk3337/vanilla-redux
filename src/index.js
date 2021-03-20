@@ -4,10 +4,13 @@ const minus = document.getElementById("minus");
 const number = document.querySelector("span");
 
 const reducer = (count = 0, action) => {
-  console.log(action);
+  if (action.type === "ADD") {
+    console.log("they are telling me to add one");
+    return count + 1;
+  }
   return count;
 };
 
 const store = createStore(reducer);
-// console.log(store.getState());
-store.dispatch({ type: "HELLO" });
+store.dispatch({ type: "ADD" });
+console.log(store.getState());
