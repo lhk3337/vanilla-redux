@@ -34,8 +34,9 @@ const deleteTodo = (text) => {
 
 const paintToDos = () => {
   const toDos = store.getState();
+  ul.innerHTML = ""; //  li 내용이 하나씩 나타남
   toDos.forEach((toDo) => {
-    const li = document.createElement("li"); //1, 1,2, 1,2,3
+    const li = document.createElement("li"); //li 내용이 중복으로 나타남 1, 1,2, 1,2,3
     li.id = toDo.id;
     li.innerText = toDo.text;
     ul.appendChild(li);
