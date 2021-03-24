@@ -1,1 +1,25 @@
-export default () => "Detail";
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+function Detail({ toDo }) {
+  return (
+    <>
+      <Link to="/">홈으로</Link>
+      <h1>{toDo?.text}</h1>
+      <h5>Created at: {toDo?.id}</h5>
+    </>
+  );
+}
+
+function mapStateToProps(state, ownProps) {
+  console.log(state);
+  console.log(ownProps);
+  const {
+    match: {
+      params: { id },
+    },
+  } = ownProps;
+  return { toDo: state.find((toDo) => toDo.id === parseInt(id)) };
+}
+
+export default connect(mapStateToProps)(Detail);
