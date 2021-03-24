@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-const Home = () => {
+const Home = ({ toDos }) => {
   const [text, setText] = useState("");
 
   const onChange = (e) => {
@@ -17,11 +18,15 @@ const Home = () => {
       <h1>To Do</h1>
       <form onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onChange} />
-        <button>추가</button>
+        <button>할일 추가</button>
       </form>
-      <ul></ul>
+      <ul>{JSON.stringify(toDos)}</ul>
     </>
   );
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return { toDos: state };
+} //store로부터 state를 가져다 줌
+
+export default connect(mapStateToProps)(Home);
